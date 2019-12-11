@@ -9,6 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from 'selenium-webdriver/http';
+import { CategoriaService } from 'src/services/domain/categoria.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,12 +20,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     NgbModule.forRoot()
   ],
   providers: [
+    CategoriaService,
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    CategoriaService
   ],
   bootstrap: [AppComponent]
 })
