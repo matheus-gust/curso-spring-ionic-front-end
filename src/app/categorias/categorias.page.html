@@ -1,10 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Categorias</ion-title>
+    </ion-toolbar>
+</ion-header>
+
 <ion-content>
-    <ion-header>
-        <ion-toolbar>
-            <ion-buttons slot="start">
-                <ion-menu-button></ion-menu-button>
-            </ion-buttons>
-            <ion-title>Categorias</ion-title>
-        </ion-toolbar>
-    </ion-header>
+    <ion-list>
+        <ion-item *ngFor="let item of items">
+            <button class="btn my-2" style="width: 100%;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3"> 
+                            <ion-thumbnail slot="start">
+                                <img src="{{bucketUrl}}/cat{{item.id}}.jpg">
+                            </ion-thumbnail>
+                        </div>
+                        <div class="col-7">
+                            <ion-label style="text-align: left;">{{item.nome}}</ion-label>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </ion-item>
+    </ion-list>
 </ion-content>
