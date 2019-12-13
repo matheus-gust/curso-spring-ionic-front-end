@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { CredenciaisDTO } from 'src/models/credenciais.dto';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,12 @@ import { MenuController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router, public menu: MenuController) { }
+  creds: CredenciaisDTO = {
+    email: "",
+    senha: ""
+  };
+
+  constructor(private router: Router, public menu: MenuController, public auth:AuthService) { }
 
   ngOnInit() {
     this.ionNavDidChange();
@@ -17,7 +24,14 @@ export class LoginPage implements OnInit {
   }
 
   public login() {
-    this.router.navigate(['categorias']);
+    this.auth.authenticate(this.creds)
+    .subscribe(response => {
+      console.log(response.headers),
+      this.router.navigate(['categorias']);
+    }),
+    error => {
+      console.log(error);
+    };
   }
 
   public ionNavDidChange() {

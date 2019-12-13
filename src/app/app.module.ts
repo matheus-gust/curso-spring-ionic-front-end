@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from 'selenium-webdriver/http';
 import { CategoriaService } from 'src/services/domain/categoria.service';
+import { AuthService } from 'src/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     CategoriaService,
+    AuthService,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
