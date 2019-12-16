@@ -9,10 +9,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient } from 'selenium-webdriver/http';
 import { CategoriaService } from 'src/services/domain/categoria.service';
 import { AuthService } from 'src/services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StorageService } from '../services/storage.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     AuthService,
     StatusBar,
     SplashScreen,
+    StorageService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     CategoriaService
   ],
